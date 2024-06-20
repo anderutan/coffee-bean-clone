@@ -32,8 +32,8 @@ export const fetchCoffeeById = createAsyncThunk<Coffee, string>(
   }
 );
 
-const coffeeSlice = createSlice({
-  name: 'coffee',
+const productSlice = createSlice({
+  name: 'product',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -72,4 +72,4 @@ const coffeeSlice = createSlice({
   },
 });
 
-export default coffeeSlice.reducer;
+export default productSlice.reducer;
