@@ -1,6 +1,7 @@
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Separator } from './ui/separator';
 import NavItems from './NavItems';
+import { Link } from 'react-router-dom';
 
 type SidebarProps = {
   children: ReactElement;
@@ -14,9 +15,9 @@ const SidebarMB: React.FC<SidebarProps> = ({ children }) => {
         <SheetContent side='left' className='w-4/5'>
           <div>
             <div className='py-7'>
-              <a href='#' className='font-bold'>
+              <Link to='/login' className='font-bold text-xl'>
                 LOGIN / SIGN UP
-              </a>
+              </Link>
             </div>
             <Separator />
             <div>
