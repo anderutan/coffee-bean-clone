@@ -1,4 +1,3 @@
-import Hamburger from 'hamburger-react';
 import logo from '/public/Logo.webp';
 import FBIcon from '/public/fb.webp';
 import IGIcon from '/public/ins.webp';
@@ -6,17 +5,20 @@ import TTIcon from '/public/tiktok.webp';
 import { Separator } from '@/components/ui/separator';
 import { MdOutlineShoppingBag } from 'react-icons/md';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
-import { useState } from 'react';
+import { RxHamburgerMenu } from 'react-icons/rx';
 import CartPopover from './CartPopover';
 import SearchbarPopover from './SearchbarPopover';
+import SidebarMB from './SidebarMB';
 
 const Navbar = () => {
-  const [isOpen, setOpen] = useState(false);
-
   return (
     <nav className='px-3'>
-      <div className='flex items-center'>
-        <Hamburger toggled={isOpen} toggle={setOpen} size={18} />
+      <div className='flex items-center py-3'>
+        <SidebarMB>
+          <button>
+            <RxHamburgerMenu className='h-5 w-5 mr-3' />
+          </button>
+        </SidebarMB>
 
         <img src={logo} alt='logo' className='h-6 w-40' />
         <div className='flex justify-evenly flex-1'>

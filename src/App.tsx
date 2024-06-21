@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './pages/Layout';
 import CoffeeStore from './pages/CoffeeStore';
 import NotFound from './pages/NotFound';
@@ -10,7 +10,8 @@ function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<CoffeeStore />} />
+        <Route path='/' element={<Navigate to='/online-store/coffee' />} />
+        <Route path='/online-store/coffee' element={<CoffeeStore />} />
         <Route path='/:product' element={<Product />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout' element={<Checkout />} />
