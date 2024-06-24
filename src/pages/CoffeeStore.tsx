@@ -1,7 +1,8 @@
-import FilterCategoryPrice from '@/components/FilterCategoryPrice';
-import FilterStatus from '@/components/FilterStatus';
+import FilterCategoryPrice from '@/components/sort-and-filter/FilterCategoryPrice';
+import FilterStatus from '@/components/sort-and-filter/FilterStatus';
 import PageBreadcrumb from '@/components/PageBreadcrumb';
 import { useLocation } from 'react-router-dom';
+import SortSelect from '@/components/sort-and-filter/SortSelect';
 
 const CoffeeStore = () => {
   const location = useLocation();
@@ -18,6 +19,7 @@ const CoffeeStore = () => {
       <div className='pt-10'>
         <FilterStatus />
         <FilterCategoryPrice />
+        <SortSelect />
       </div>
     </main>
   );

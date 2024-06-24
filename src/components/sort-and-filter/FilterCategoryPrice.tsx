@@ -7,7 +7,7 @@ import {
   DrawerTrigger,
 } from '@/components/ui/drawer';
 import { IoCloseSharp } from 'react-icons/io5';
-import { Separator } from './ui/separator';
+import { Separator } from '@/components/ui/separator';
 import { coffeeData } from '@/api/data';
 import ReactSlider from 'react-slider';
 import { useSearchParams } from 'react-router-dom';
@@ -76,46 +76,48 @@ const FilterCategoryPrice = () => {
   }, [searchParams, initialPriceRange]);
 
   return (
-    <Drawer>
-      <DrawerTrigger className='w-full py-3 bg-[#E4E4E4] border-b-2 border-r-2 border-slate-300'>
-        Filter
-      </DrawerTrigger>
-      <DrawerContent className='h-[90%]'>
-        <DrawerClose className='absolute right-3 top-3'>
-          <IoCloseSharp className='w-8 h-8' />
-        </DrawerClose>
-        <DrawerHeader>
-          <DrawerTitle className='text-3xl text-left'>FILTER</DrawerTitle>
-          <span className='relative pl-4 after:absolute after:h-[5px] after:w-16 after:-bottom-0 after:left-0 after:bg-[#512D6D]'></span>
-        </DrawerHeader>
-        <div className='px-4'>
-          <p className='text-xl font-medium mb-5'>CATEGORY</p>
-          {uniqueCategories.map((category) => (
-            <CheckBox
-              category={category}
-              key={category}
-              checked={selectedCategories.includes(category)}
-              onChange={handleCategory}
-            />
-          ))}
+    <div className='pb-5'>
+      <Drawer>
+        <DrawerTrigger className='w-full py-3 bg-[#E4E4E4] border-b-2 border-r-2 border-slate-300'>
+          Filter
+        </DrawerTrigger>
+        <DrawerContent className='h-[90%]'>
+          <DrawerClose className='absolute right-3 top-3'>
+            <IoCloseSharp className='w-8 h-8' />
+          </DrawerClose>
+          <DrawerHeader>
+            <DrawerTitle className='text-3xl text-left'>FILTER</DrawerTitle>
+            <span className='relative pl-4 after:absolute after:h-[5px] after:w-16 after:-bottom-0 after:left-0 after:bg-[#512D6D]'></span>
+          </DrawerHeader>
+          <div className='px-4'>
+            <p className='text-xl font-medium mb-5'>CATEGORY</p>
+            {uniqueCategories.map((category) => (
+              <CheckBox
+                category={category}
+                key={category}
+                checked={selectedCategories.includes(category)}
+                onChange={handleCategory}
+              />
+            ))}
 
-          <Separator />
-          <p className='text-xl font-medium my-5'>Price</p>
-          <ReactSlider
-            className='w-full h-[25px]'
-            thumbClassName='h-5 w-5 bg-purple-500 p-5 cursor-grab flex justify-center items-center text-white'
-            trackClassName='h-[8px] bg-[#512D6D]'
-            min={minPrice}
-            max={maxPrice}
-            value={priceRange}
-            onChange={handleSliderChange}
-            renderThumb={(props, state) => (
-              <div {...props}>{state.valueNow}</div>
-            )}
-          />
-        </div>
-      </DrawerContent>
-    </Drawer>
+            <Separator />
+            <p className='text-xl font-medium my-5'>Price</p>
+            <ReactSlider
+              className='w-full h-[25px]'
+              thumbClassName='h-5 w-5 bg-purple-500 p-5 cursor-grab flex justify-center items-center text-white'
+              trackClassName='h-[8px] bg-[#512D6D]'
+              min={minPrice}
+              max={maxPrice}
+              value={priceRange}
+              onChange={handleSliderChange}
+              renderThumb={(props, state) => (
+                <div {...props}>{state.valueNow}</div>
+              )}
+            />
+          </div>
+        </DrawerContent>
+      </Drawer>
+    </div>
   );
 };
 
