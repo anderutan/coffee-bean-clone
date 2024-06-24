@@ -11,26 +11,30 @@ import { Separator } from './ui/separator';
 import { coffeeData } from '@/api/data';
 import ReactSlider from 'react-slider';
 import { useSearchParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
-const FilterCatergoryPrice = () => {
-  const uniqueCategories = [
-    ...new Set(coffeeData.map((coffee) => coffee.category)),
-  ];
+const FilterCategoryPrice = () => {
+  const uniqueCategories = useMemo(
+    () => [...new Set(coffeeData.map((coffee) => coffee.category))],
+    []
+  );
   const [searchParams, setSearchParams] = useSearchParams();
 
   const selectedCategories = searchParams.getAll('category');
   const minPrice = Math.min(...coffeeData.map((coffee) => coffee.price));
   const maxPrice = Math.max(...coffeeData.map((coffee) => coffee.price));
 
-  const initialPriceRange = [
-    Number(searchParams.get('minPrice')) || minPrice,
-    Number(searchParams.get('maxPrice')) || maxPrice,
-  ];
+  const initialPriceRange = useMemo(
+    () => [
+      Number(searchParams.get('minPrice')) || minPrice,
+      Number(searchParams.get('maxPrice')) || maxPrice,
+    ],
+    [searchParams, minPrice, maxPrice]
+  );
 
   const [priceRange, setPriceRange] = useState(initialPriceRange);
 
-  const handleCategory = (e) => {
+  const handleCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
     const category = e.target.value;
     const newSelectedCategories = [...selectedCategories];
 
@@ -55,7 +59,7 @@ const FilterCatergoryPrice = () => {
     });
   };
 
-  const handleSliderChange = (value) => {
+  const handleSliderChange = (value: number[]) => {
     setPriceRange(value);
     setSearchParams((prevParams) => {
       const params = new URLSearchParams(prevParams);
@@ -69,7 +73,7 @@ const FilterCatergoryPrice = () => {
 
   useEffect(() => {
     setPriceRange(initialPriceRange);
-  }, [searchParams]);
+  }, [searchParams, initialPriceRange]);
 
   return (
     <Drawer>
@@ -115,7 +119,7 @@ const FilterCatergoryPrice = () => {
   );
 };
 
-export default FilterCatergoryPrice;
+export default FilterCategoryPrice;
 
 type CheckBox = {
   category: string;

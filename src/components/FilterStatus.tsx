@@ -12,7 +12,7 @@ const FilterStatus = () => {
     Number(searchParams.get('maxPrice')) || maxPrice,
   ];
 
-  const handleClick = (category) => {
+  const handleClick = (category: string | null) => {
     const params = new URLSearchParams(searchParams);
     if (category) {
       params.delete('category');
@@ -48,7 +48,7 @@ const FilterStatus = () => {
         ))}
         {isPriceRangeAdjusted && (
           <div className='flex gap-3 items-center py-1'>
-            <button onClick={() => handleClick()} className='pl-3'>
+            <button onClick={() => handleClick(null)} className='pl-3'>
               <IoCloseSharp className='h-5 w-5 text-slate-400' />
             </button>
             <p className='font-light capitalize'>

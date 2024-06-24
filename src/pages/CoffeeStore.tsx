@@ -1,4 +1,4 @@
-import FilterCatergoryPrice from '@/components/FilterCatergoryPrice';
+import FilterCategoryPrice from '@/components/FilterCategoryPrice';
 import FilterStatus from '@/components/FilterStatus';
 import PageBreadcrumb from '@/components/PageBreadcrumb';
 import { useLocation } from 'react-router-dom';
@@ -17,7 +17,7 @@ const CoffeeStore = () => {
 
       <div className='pt-10'>
         <FilterStatus />
-        <FilterCatergoryPrice />
+        <FilterCategoryPrice />
       </div>
     </main>
   );
