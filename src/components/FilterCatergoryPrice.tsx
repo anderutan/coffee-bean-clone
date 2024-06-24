@@ -12,7 +12,6 @@ import { coffeeData } from '@/api/data';
 import ReactSlider from 'react-slider';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { BsFillChatSquareFill } from 'react-icons/bs';
 
 const FilterCatergoryPrice = () => {
   const uniqueCategories = [
@@ -62,6 +61,7 @@ const FilterCatergoryPrice = () => {
       const params = new URLSearchParams(prevParams);
       params.set('minPrice', String(value[0]));
       params.set('maxPrice', String(value[1]));
+      params.delete('category');
       selectedCategories.forEach((cat) => params.append('category', cat));
       return params;
     });

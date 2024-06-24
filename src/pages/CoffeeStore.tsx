@@ -1,4 +1,5 @@
 import FilterCatergoryPrice from '@/components/FilterCatergoryPrice';
+import FilterStatus from '@/components/FilterStatus';
 import PageBreadcrumb from '@/components/PageBreadcrumb';
 import { useLocation } from 'react-router-dom';
 
@@ -14,8 +15,10 @@ const CoffeeStore = () => {
         <span className='relative pl-4 after:absolute after:h-[5px] after:w-16 after:-bottom-5 after:-left-5 after:bg-[#512D6D]'></span>
       </div>
 
-      {/* Filter function with shadcn drawer */}
-      <FilterCatergoryPrice />
+      <div className='pt-10'>
+        <FilterStatus />
+        <FilterCatergoryPrice />
+      </div>
     </main>
   );
 };
