@@ -8,16 +8,20 @@ import {
 } from '@/components/ui/drawer';
 import { IoCloseSharp } from 'react-icons/io5';
 import { Separator } from '@/components/ui/separator';
-import { coffeeData } from '@/api/data';
 import ReactSlider from 'react-slider';
 import { useSearchParams } from 'react-router-dom';
 import React, { useEffect, useMemo, useState } from 'react';
+import type { Coffee } from '@/lib/type';
 
-const FilterCategoryPrice = () => {
-  const uniqueCategories = useMemo(
-    () => [...new Set(coffeeData.map((coffee) => coffee.category))],
-    []
-  );
+type Props = {
+  coffeeData: Coffee[];
+};
+
+const FilterCategoryPrice = ({ coffeeData }: Props) => {
+  const uniqueCategories = [
+    ...new Set(coffeeData.map((coffee) => coffee.category)),
+  ];
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const selectedCategories = searchParams.getAll('category');

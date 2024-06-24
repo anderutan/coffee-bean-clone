@@ -1,8 +1,14 @@
 import { IoCloseSharp } from 'react-icons/io5';
-import { coffeeData } from '@/api/data';
 import { useSearchParams } from 'react-router-dom';
+import type { Coffee } from '@/lib/type';
 
-const FilterStatus = () => {
+import React from 'react';
+
+type Props = {
+  coffeeData: Coffee[];
+};
+
+const FilterStatus = ({ coffeeData }: Props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedCategories = searchParams.getAll('category');
   const minPrice = Math.min(...coffeeData.map((coffee) => coffee.price));
