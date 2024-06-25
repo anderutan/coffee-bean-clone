@@ -1,14 +1,57 @@
 import type { Coffee } from '@/lib/type';
+import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   coffeeData: Coffee[];
 };
 
 const ProductList = ({ coffeeData }: Props) => {
+  const [searchParams] = useSearchParams();
+
+  const searchTerm = searchParams.getAll('category');
+  const minPrice = searchParams.get('minPrice');
+  const maxPrice = searchParams.get('maxPrice');
+  const productOrder = searchParams.get('product-order');
+
+  let filterData = coffeeData;
+
+  // Filter by category
+  if (searchTerm.length > 0) {
+    filterData = filterData.filter((coffee) =>
+      searchTerm.some((term) => coffee.category.includes(term))
+    );
+  }
+
+  // Filter by price range
+  if (minPrice && maxPrice) {
+    filterData = filterData.filter(
+      (coffee) =>
+        coffee.price >= Number(minPrice) && coffee.price <= Number(maxPrice)
+    );
+  }
+
+  // Sort the data based on product-order
+  if (productOrder) {
+    filterData = filterData.slice().sort((a, b) => {
+      switch (productOrder) {
+        case 'name-asc':
+          return a.title.localeCompare(b.title);
+        case 'name-desc':
+          return b.title.localeCompare(a.title);
+        case 'price-asc':
+          return a.price - b.price;
+        case 'price-desc':
+          return b.price - a.price;
+        default:
+          return 0;
+      }
+    });
+  }
+
   return (
     <div className='w-full py-10 grid grid-cols-2 gap-x-4 gap-y-6'>
-      {coffeeData.map((item) => (
-        <div className='flex flex-col items-center'>
+      {filterData.map((item) => (
+        <div className='flex flex-col items-center' key={item.title}>
           <img src={item.image} alt={item.title} className='h-40 w-40' />
           <h3 className='uppercase text-xl leading-5 font-medium text-center h-[2.7rem] overflow-hidden line-clamp-2 mb-5'>
             {item.title}
