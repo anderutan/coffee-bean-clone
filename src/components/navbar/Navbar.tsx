@@ -23,7 +23,7 @@ const Navbar = () => {
           </button>
         </SidebarMB>
 
-        <img src={logo} alt='logo' className='h-6 w-40' />
+        <img src={logo} alt='logo' className='w-[50%]' />
         <div className='flex justify-evenly flex-1'>
           <a href='#'>
             <img src={FBIcon} alt='Facebook icon' className='h-5' />

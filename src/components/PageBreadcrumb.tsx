@@ -8,7 +8,12 @@ import {
 } from '@/components/ui/breadcrumb';
 import React from 'react';
 
-const PageBreadcrumb = ({ pathArray }: { pathArray: string[] }) => {
+type Props = {
+  pathArray: string[];
+  title?: string;
+};
+
+const PageBreadcrumb = ({ pathArray, title }: Props) => {
   return (
     <>
       <Breadcrumb className='py-5'>
@@ -25,12 +30,12 @@ const PageBreadcrumb = ({ pathArray }: { pathArray: string[] }) => {
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
                   {isLast ? (
-                    <BreadcrumbPage className='capitalize font-semibold'>
-                      {path}
+                    <BreadcrumbPage className={`capitalize font-semibold`}>
+                      {title ? title : path}
                     </BreadcrumbPage>
                   ) : (
                     <BreadcrumbLink href={fullPath} className='capitalize '>
-                      {path}
+                      {title ? title : path}
                     </BreadcrumbLink>
                   )}
                 </BreadcrumbItem>

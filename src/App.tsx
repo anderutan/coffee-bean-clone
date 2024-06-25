@@ -12,7 +12,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path='/' element={<Navigate to='/online-store/coffee' />} />
         <Route path='/online-store/coffee' element={<CoffeeStore />} />
-        <Route path='/:product' element={<Product />} />
+        <Route path='/:productId' element={<Product />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout' element={<Checkout />} />
         <Route path='*' element={<NotFound />} />
