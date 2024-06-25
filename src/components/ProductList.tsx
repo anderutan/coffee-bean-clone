@@ -1,3 +1,5 @@
+import { useAppDispatch } from '@/app/hooks';
+import { addItemToCart } from '@/features/cart/cartSlice';
 import type { Coffee } from '@/lib/type';
 import { useSearchParams } from 'react-router-dom';
 
@@ -7,6 +9,7 @@ type Props = {
 
 const ProductList = ({ coffeeData }: Props) => {
   const [searchParams] = useSearchParams();
+  const dispatch = useAppDispatch();
 
   const searchTerm = searchParams.getAll('category');
   const minPrice = searchParams.get('minPrice');
@@ -48,6 +51,11 @@ const ProductList = ({ coffeeData }: Props) => {
     });
   }
 
+  const handleClick = (item: Coffee) => {
+    dispatch(addItemToCart(item));
+    console.log(item);
+  };
+
   return (
     <div className='w-full py-10 grid grid-cols-2 gap-x-4 gap-y-6'>
       {filterData.map((item) => (
@@ -60,7 +68,10 @@ const ProductList = ({ coffeeData }: Props) => {
             MYR{item.price}.00
           </p>
           <div className='relative w-full'>
-            <button className='w-full py-3 bg-[#512D6D] text-white font-bold relative z-10'>
+            <button
+              className='w-full py-3 bg-[#512D6D] text-white font-bold relative z-10'
+              onClick={() => handleClick(item)}
+            >
               ADD TO CART
             </button>
             <span className='absolute h-full w-full -bottom-[0.15rem] -right-[0.15rem] bg-[#9A4BD8] z-0'></span>

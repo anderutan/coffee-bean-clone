@@ -9,8 +9,11 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import CartPopover from './CartPopover';
 import SearchbarPopover from './SearchbarPopover';
 import SidebarMB from './SidebarMB';
+import { useAppSelector } from '@/app/hooks';
 
 const Navbar = () => {
+  const cartItem = useAppSelector((state) => state.cart.items);
+
   return (
     <nav className='px-3'>
       <div className='flex items-center py-3'>
@@ -38,6 +41,11 @@ const Navbar = () => {
         <CartPopover>
           <MdOutlineShoppingBag className='h-6 w-6' />
         </CartPopover>
+        {cartItem.length > 0 && (
+          <p className='-ml-3 text-lg text-[#512D6D] font-bold'>
+            ({cartItem.length})
+          </p>
+        )}
         <SearchbarPopover>
           <FaMagnifyingGlass className='h-5 w-5' />
         </SearchbarPopover>

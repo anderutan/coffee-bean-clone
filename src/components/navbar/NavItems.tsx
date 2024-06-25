@@ -1,5 +1,5 @@
 import navMenu from '@/api/nav-menu';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import {
   Menubar,
   MenubarContent,
@@ -18,7 +18,7 @@ const removeSpace = (str: string) => str.replace(/\s+/g, '');
 const NavItems = () => {
   const [isClicked, setIsClicked] = useState(Array(navMenu.length).fill(false));
 
-  const handleToggle = (index) => {
+  const handleToggle = (index: number) => {
     setIsClicked((prevState) => {
       const newState = [...prevState];
       newState[index] = !newState[index];
