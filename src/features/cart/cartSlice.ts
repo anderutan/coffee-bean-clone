@@ -45,7 +45,7 @@ const cartSlice = createSlice({
         alert('Product is out of stock');
       }
     },
-    removeItemFromCart: (state, action: PayloadAction<number>) => {
+    removeItemFromCart: (state, action: PayloadAction<string>) => {
       const productId = action.payload;
       const existingItem = state.items.find(
         (item) => item.product.id === productId
@@ -60,7 +60,7 @@ const cartSlice = createSlice({
     },
     updateItemQuantity: (
       state,
-      action: PayloadAction<{ productId: number; quantity: number }>
+      action: PayloadAction<{ productId: string; quantity: number }>
     ) => {
       const { productId, quantity } = action.payload;
       const existingItem = state.items.find(

@@ -40,9 +40,8 @@ const formSchema = z.object({
     }),
 });
 
-export default function ReviewForm() {
+export default function ReviewForm({ productId }: { productId: string }) {
   const dispatch = useAppDispatch();
-  const { productId } = useParams<{ productId: string }>();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

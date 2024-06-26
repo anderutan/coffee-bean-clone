@@ -36,9 +36,8 @@ export const updateCoffeeReviews = createAsyncThunk<
   Coffee,
   { id: string; review: Review }
 >('coffee/updateCoffeeReviews', async ({ id, review }) => {
-  await updateReviews({ id, review });
-  const updatedCoffee = await getCoffeeById(id);
-  return updatedCoffee;
+  const updatedCoffee = await updateReviews({ id, review });
+  return updatedCoffee as Coffee;
 });
 
 const productSlice = createSlice({
@@ -85,16 +84,13 @@ const productSlice = createSlice({
       updateCoffeeReviews.fulfilled,
       (state, action: PayloadAction<Coffee>) => {
         state.loading = false;
-        if (state.selectedCoffee?.id === action.payload.id) {
-          state.selectedCoffee = action.payload;
-        }
+        state.selectedCoffee = action.payload;
         const index = state.coffee.findIndex(
           (coffee) => coffee.id === action.payload.id
         );
         if (index !== -1) {
           state.coffee[index] = action.payload;
         }
-        state.error = null;
       }
     );
     builder.addCase(updateCoffeeReviews.rejected, (state, action) => {

@@ -1,6 +1,10 @@
+// Product.tsx
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import PageBreadcrumb from '@/components/PageBreadcrumb';
-import { fetchCoffeeById } from '@/features/product/productSlice';
+import {
+  fetchCoffeeById,
+  updateCoffeeReviews,
+} from '@/features/product/productSlice';
 import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import {
@@ -25,8 +29,10 @@ const Product = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    productId && dispatch(fetchCoffeeById(productId));
-  }, []);
+    if (productId) {
+      dispatch(fetchCoffeeById(productId));
+    }
+  }, [productId, dispatch]);
 
   const selectedCoffeeData = useAppSelector(
     (state) => state.product.selectedCoffee
@@ -36,32 +42,36 @@ const Product = () => {
     if (
       quantity > 1 &&
       selectedCoffeeData &&
-      quantity <= selectedCoffeeData?.stock
-    )
+      quantity <= selectedCoffeeData.stock
+    ) {
       setQuantity((prev) => prev - 1);
+    }
   };
 
   const handleIncrease = () => {
     if (
       quantity > 0 &&
       selectedCoffeeData &&
-      quantity < selectedCoffeeData?.stock
-    )
+      quantity < selectedCoffeeData.stock
+    ) {
       setQuantity((prev) => prev + 1);
+    }
   };
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
-    if (selectedCoffeeData && value <= selectedCoffeeData?.stock) {
+    if (selectedCoffeeData && value <= selectedCoffeeData.stock) {
       setQuantity(value);
-    } else if (selectedCoffeeData && value > selectedCoffeeData?.stock) {
-      setQuantity(selectedCoffeeData?.stock);
+    } else if (selectedCoffeeData && value > selectedCoffeeData.stock) {
+      setQuantity(selectedCoffeeData.stock);
     }
   };
 
   const handleAddCart = () => {
-    selectedCoffeeData && dispatch(addItemToCart(selectedCoffeeData));
-    dispatch(updateItemQuantity({ productId: Number(productId), quantity }));
+    if (selectedCoffeeData) {
+      dispatch(addItemToCart(selectedCoffeeData));
+      dispatch(updateItemQuantity({ productId: productId, quantity }));
+    }
   };
 
   return (
@@ -156,7 +166,7 @@ const Product = () => {
                 </div>
               ))
             ) : (
-              <p>There is no reviews for this product.</p>
+              <p>There are no reviews for this product.</p>
             )}
             <div className='py-3'>
               <p className='font-bold'>
@@ -166,7 +176,7 @@ const Product = () => {
                 {selectedCoffeeData?.title}
               </p>
               <div className='py-3'>
-                <ReviewForm />
+                <ReviewForm productId={productId} />
               </div>
             </div>
           </TabsContent>

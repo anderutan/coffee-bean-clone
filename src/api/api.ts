@@ -46,8 +46,12 @@ export const updateReviews = ({ id, review }: UpdateReviewsProps) => {
       reviews: [...coffee.reviews, review],
     };
 
-    coffeeData[coffeeIndex] = updatedCoffee;
+    const updatedCoffeeData = coffeeData.map((coffee, index) =>
+      index === coffeeIndex ? updatedCoffee : coffee
+    );
 
-    setTimeout(() => resolve(updatedCoffee.reviews), 250);
+    const updateCoffee = updatedCoffeeData.find((coffee) => coffee.id === id);
+
+    setTimeout(() => resolve(updateCoffee), 250);
   });
 };
