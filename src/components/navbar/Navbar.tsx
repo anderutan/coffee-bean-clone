@@ -10,6 +10,7 @@ import CartPopover from './CartPopover';
 import SearchbarPopover from './SearchbarPopover';
 import SidebarMB from './SidebarMB';
 import { useAppSelector } from '@/app/hooks';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const cartItem = useAppSelector((state) => state.cart.items);
@@ -22,8 +23,9 @@ const Navbar = () => {
             <RxHamburgerMenu className='h-5 w-5 mr-3' />
           </button>
         </SidebarMB>
-
-        <img src={logo} alt='logo' className='w-[50%]' />
+        <Link to='/' className='w-[50%]'>
+          <img src={logo} alt='logo' />
+        </Link>
         <div className='flex justify-evenly flex-1'>
           <a href='#'>
             <img src={FBIcon} alt='Facebook icon' className='h-5' />
