@@ -15,21 +15,21 @@ type Props = {
 const CartPopoverItemCard = ({ item }: Props) => {
   const dispatch = useAppDispatch();
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     dispatch(removeItemFromCart(id));
   };
 
-  const handleIncrease = (id: number, quantity: number) => {
+  const handleIncrease = (id: string, quantity: number) => {
     dispatch(updateItemQuantity({ productId: id, quantity: quantity + 1 }));
   };
 
-  const handleDecrease = (id: number, quantity: number) => {
+  const handleDecrease = (id: string, quantity: number) => {
     if (quantity > 1) {
       dispatch(updateItemQuantity({ productId: id, quantity: quantity - 1 }));
     }
   };
 
-  const handleQuantityChange = (id: number, quantity: number) => {
+  const handleQuantityChange = (id: string, quantity: number) => {
     if (quantity > 0) {
       dispatch(updateItemQuantity({ productId: id, quantity }));
     }

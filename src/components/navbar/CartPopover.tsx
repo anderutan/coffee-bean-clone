@@ -5,7 +5,7 @@ import {
 } from '@/components/ui/popover';
 import { ReactElement } from 'react';
 import { Separator } from '../ui/separator';
-import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { useAppSelector } from '@/app/hooks';
 import CartPopoverItemCard from './CartPopoverItemCard';
 import { Link } from 'react-router-dom';
 
