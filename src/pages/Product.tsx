@@ -65,7 +65,7 @@ const Product = () => {
   };
 
   return (
-    <main className='px-3 h-full min-h-screen'>
+    <main className='px-3 pb-10 h-full min-h-screen'>
       <PageBreadcrumb pathArray={pathArray} title={selectedCoffeeData?.title} />
       <div>
         <img src={selectedCoffeeData?.image} alt='' />
