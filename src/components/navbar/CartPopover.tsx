@@ -63,7 +63,7 @@ const CartPopover: React.FC<CartPopoverProps> = ({ children }) => {
             <div className='relative'>
               <Link
                 className='w-full py-3 px-5 bg-[#512D6D] text-white font-bold relative z-10'
-                to='/cart'
+                to='/checkout'
               >
                 CHECKOUT
               </Link>

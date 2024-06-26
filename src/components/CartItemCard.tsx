@@ -47,7 +47,9 @@ const CartItemCard = ({ item }: Props) => {
         <div className='flex-1 flex flex-col gap-4'>
           <p className='text-lg uppercase leading-5'>{item.product.title}</p>
           <p className='text-sm'>Stock available: {item.product.stock}</p>
-          <p className='font-bold text-xl'>MYR{item.product.price}.00</p>
+          <p className='font-bold text-xl'>
+            MYR{item.product.price * item.quantity}.00
+          </p>
           <div className='flex-1 flex justify-between -mt-3'>
             <div>
               <button

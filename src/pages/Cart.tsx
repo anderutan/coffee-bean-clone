@@ -10,7 +10,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { MdKeyboardArrowRight } from 'react-icons/md';
 
 const Cart = () => {
   const cartItem = useAppSelector((state) => state.cart);
