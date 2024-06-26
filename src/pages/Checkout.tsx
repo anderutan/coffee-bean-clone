@@ -88,9 +88,9 @@ const Checkout = () => {
                 <div className='flex'>
                   <Input
                     placeholder='Enter Promo Code...'
-                    className='border border-slate-500'
+                    className='border border-slate-500 focus-visible:ring-0'
                   />
-                  <button className='h-10 px-6 bg-[#512D6D] text-white font-bold flex justify-center items-center rounded-md rounded-l-none -ml-3'>
+                  <button className=' h-10 px-6 bg-[#512D6D] text-white font-bold flex justify-center items-center rounded-md rounded-l-none -ml-3'>
                     APPLY
                   </button>
                 </div>
