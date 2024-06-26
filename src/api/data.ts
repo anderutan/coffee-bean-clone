@@ -18,7 +18,7 @@ import VNImg from '@/assets/viennese.webp';
 
 export const coffeeData: Coffee[] = [
   {
-    id: 1,
+    id: '1',
     title: 'brazil cerrado',
     price: 38,
     description:
@@ -28,7 +28,7 @@ export const coffeeData: Coffee[] = [
     stock: 10,
     reviews: [
       {
-        id: 1,
+        id: '1',
         nickname: 'John Doe',
         summary: 'Good taste!',
         review:
@@ -37,7 +37,7 @@ export const coffeeData: Coffee[] = [
     ],
   },
   {
-    id: 2,
+    id: '2',
     title: 'colombia narino',
     price: 42,
     description:
@@ -47,14 +47,14 @@ export const coffeeData: Coffee[] = [
     stock: 2,
     reviews: [
       {
-        id: 1,
+        id: '1',
         nickname: 'John Doe',
         summary: 'Good taste!',
         review:
           'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       },
       {
-        id: 2,
+        id: '2',
         nickname: 'Jane Smith',
         summary: 'Excellent coffee!',
         review:
@@ -63,7 +63,7 @@ export const coffeeData: Coffee[] = [
     ],
   },
   {
-    id: 3,
+    id: '3',
     title: 'costa rica la cascada tarrazu',
     price: 45,
     description:
@@ -73,7 +73,7 @@ export const coffeeData: Coffee[] = [
     stock: 1,
     reviews: [
       {
-        id: 1,
+        id: '1',
         nickname: 'Jane Doe',
         summary: 'Smooth and rich!',
         review:
@@ -82,7 +82,7 @@ export const coffeeData: Coffee[] = [
     ],
   },
   {
-    id: 4,
+    id: '4',
     title: 'Decaf Espresso Roast',
     price: 45,
     description:
@@ -93,7 +93,7 @@ export const coffeeData: Coffee[] = [
     reviews: [],
   },
   {
-    id: 5,
+    id: '5',
     title: 'Decaf House Blend',
     price: 48,
     description:
@@ -104,7 +104,7 @@ export const coffeeData: Coffee[] = [
     reviews: [],
   },
   {
-    id: 6,
+    id: '6',
     title: 'espresso roast',
     price: 48,
     description:
@@ -114,7 +114,7 @@ export const coffeeData: Coffee[] = [
     stock: 4,
     reviews: [
       {
-        id: 1,
+        id: '1',
         nickname: 'John Doe',
         summary: 'Good taste!',
         review:
@@ -123,7 +123,7 @@ export const coffeeData: Coffee[] = [
     ],
   },
   {
-    id: 7,
+    id: '7',
     title: 'ethiopia yirgachefee',
     price: 48,
     description:
@@ -134,7 +134,7 @@ export const coffeeData: Coffee[] = [
     reviews: [],
   },
   {
-    id: 8,
+    id: '8',
     title: 'french vanilla 12OZ',
     price: 78,
     description:
@@ -144,14 +144,14 @@ export const coffeeData: Coffee[] = [
     stock: 10,
     reviews: [
       {
-        id: 1,
+        id: '1',
         nickname: 'John Doe',
         summary: 'Good taste!',
         review:
           'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       },
       {
-        id: 2,
+        id: '2',
         nickname: 'Jane Doe',
         summary: 'Love the flavor!',
         review:
@@ -160,7 +160,7 @@ export const coffeeData: Coffee[] = [
     ],
   },
   {
-    id: 9,
+    id: '9',
     title: 'hazelnut 12OZ',
     price: 78,
     description:
@@ -171,7 +171,7 @@ export const coffeeData: Coffee[] = [
     reviews: [],
   },
   {
-    id: 10,
+    id: '10',
     title: 'holiday blend',
     price: 88,
     description:
@@ -182,7 +182,7 @@ export const coffeeData: Coffee[] = [
     reviews: [],
   },
   {
-    id: 11,
+    id: '11',
     title: 'house blend',
     price: 58,
     description:
@@ -193,7 +193,7 @@ export const coffeeData: Coffee[] = [
     reviews: [],
   },
   {
-    id: 12,
+    id: '12',
     title: 'kenya aa',
     price: 58,
     description:
@@ -204,7 +204,7 @@ export const coffeeData: Coffee[] = [
     reviews: [],
   },
   {
-    id: 13,
+    id: '13',
     title: 'mocha java',
     price: 58,
     description:
@@ -215,7 +215,7 @@ export const coffeeData: Coffee[] = [
     reviews: [],
   },
   {
-    id: 14,
+    id: '14',
     title: 'papua new guinea sigri',
     price: 58,
     description:
@@ -226,7 +226,7 @@ export const coffeeData: Coffee[] = [
     reviews: [],
   },
   {
-    id: 15,
+    id: '15',
     title: 'sumatra mandheling',
     price: 58,
     description:
@@ -237,7 +237,7 @@ export const coffeeData: Coffee[] = [
     reviews: [],
   },
   {
-    id: 16,
+    id: '16',
     title: 'viennese',
     price: 68,
     description:

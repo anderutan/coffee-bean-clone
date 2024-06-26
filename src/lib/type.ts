@@ -1,12 +1,12 @@
 export interface Review {
-  id: number;
+  id: string;
   nickname?: string;
   summary?: string;
   review?: string;
 }
 
 export interface Coffee {
-  id: number;
+  id: string;
   title: string;
   price: number;
   description: string;

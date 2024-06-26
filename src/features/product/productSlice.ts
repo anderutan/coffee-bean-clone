@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import type { Coffee } from '@/lib/type';
-import { getCoffeeById, getCoffeeList } from '@/api/api';
+import type { Coffee, Review } from '@/lib/type';
+import { getCoffeeById, getCoffeeList, updateReviews } from '@/api/api';
 
 type InitialState = {
   loading: boolean;
@@ -31,6 +31,15 @@ export const fetchCoffeeById = createAsyncThunk<Coffee, string>(
     return response;
   }
 );
+
+export const updateCoffeeReviews = createAsyncThunk<
+  Coffee,
+  { id: string; review: Review }
+>('coffee/updateCoffeeReviews', async ({ id, review }) => {
+  await updateReviews({ id, review });
+  const updatedCoffee = await getCoffeeById(id);
+  return updatedCoffee;
+});
 
 const productSlice = createSlice({
   name: 'product',
@@ -68,6 +77,29 @@ const productSlice = createSlice({
       state.loading = false;
       state.selectedCoffee = null;
       state.error = action.error.message || 'Something went wrong';
+    });
+    builder.addCase(updateCoffeeReviews.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(
+      updateCoffeeReviews.fulfilled,
+      (state, action: PayloadAction<Coffee>) => {
+        state.loading = false;
+        if (state.selectedCoffee?.id === action.payload.id) {
+          state.selectedCoffee = action.payload;
+        }
+        const index = state.coffee.findIndex(
+          (coffee) => coffee.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.coffee[index] = action.payload;
+        }
+        state.error = null;
+      }
+    );
+    builder.addCase(updateCoffeeReviews.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message || 'Failed to update reviews';
     });
   },
 });
