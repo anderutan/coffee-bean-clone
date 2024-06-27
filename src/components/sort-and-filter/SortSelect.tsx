@@ -8,7 +8,8 @@ import {
 import { useSearchParams } from 'react-router-dom';
 
 const SortSelect = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_searchParams, setSearchParams] = useSearchParams();
 
   const handleSortChange = (value: string) => {
     setSearchParams((prevParams) => {

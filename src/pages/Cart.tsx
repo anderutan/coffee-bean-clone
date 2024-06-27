@@ -11,7 +11,6 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Divide } from 'lucide-react';
 
 const Cart = () => {
   const cartItem = useAppSelector((state) => state.cart);

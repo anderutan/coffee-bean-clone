@@ -2,8 +2,6 @@ import { IoCloseSharp } from 'react-icons/io5';
 import { useSearchParams } from 'react-router-dom';
 import type { Coffee } from '@/lib/type';
 
-import React from 'react';
-
 type Props = {
   coffeeData: Coffee[];
 };

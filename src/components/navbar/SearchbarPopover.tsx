@@ -5,7 +5,6 @@ import {
 } from '@/components/ui/popover';
 
 import { ReactElement } from 'react';
-import { Separator } from './ui/separator';
 
 type SearchbarPopoverProps = {
   children: ReactElement;

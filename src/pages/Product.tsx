@@ -1,10 +1,7 @@
 // Product.tsx
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import PageBreadcrumb from '@/components/PageBreadcrumb';
-import {
-  fetchCoffeeById,
-  updateCoffeeReviews,
-} from '@/features/product/productSlice';
+import { fetchCoffeeById } from '@/features/product/productSlice';
 import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import {

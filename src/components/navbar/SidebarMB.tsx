@@ -2,6 +2,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Separator } from '../ui/separator';
 import NavItems from './NavItems';
 import { Link } from 'react-router-dom';
+import { ReactElement } from 'react';
 
 type SidebarProps = {
   children: ReactElement;
