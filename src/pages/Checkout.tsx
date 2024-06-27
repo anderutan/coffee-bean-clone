@@ -20,6 +20,7 @@ import {
 import CheckoutItemCard from '@/components/CheckoutItemCard';
 import { Separator } from '@/components/ui/separator';
 import { PhoneCallIcon, Truck } from 'lucide-react';
+import CheckoutForm from '@/components/CheckoutForm';
 
 const Checkout = () => {
   const [open, setOpen] = useState(true);
@@ -66,8 +67,10 @@ const Checkout = () => {
             </CardContent>
             <CardContent className='py-5 border-b border-b-slate-400'>
               <div className='flex justify-between items-center'>
-                <p className='text-2xl font-medium leading-6'>ORDER TOTAL</p>
-                <p className='flex-1 text-4xl font-semibold text-end'>
+                <p className='flex-1 text-2xl font-medium leading-6'>
+                  ORDER TOTAL
+                </p>
+                <p className='flex-auto text-4xl font-semibold text-end'>
                   MYR{total}
                 </p>
               </div>
@@ -78,19 +81,19 @@ const Checkout = () => {
                 {cartItem.totalQuantity} Items)
               </p>
               <Separator className='bg-slate-300' />
-              {cartItem.items.map((item) => (
-                <CheckoutItemCard item={item} />
+              {cartItem.items.map((item, index) => (
+                <CheckoutItemCard item={item} key={index} />
               ))}
             </CardContent>
             <CardFooter className='w-full flex flex-col'>
-              <div className='mt-10 my-5'>
+              <div className='w-full mt-10 my-5'>
                 <p className='font-medium mb-1'>PROMO CODE</p>
                 <div className='flex'>
                   <Input
                     placeholder='Enter Promo Code...'
                     className='border border-slate-500 focus-visible:ring-0'
                   />
-                  <button className=' h-10 px-6 bg-[#512D6D] text-white font-bold flex justify-center items-center rounded-md rounded-l-none -ml-3'>
+                  <button className='h-10 px-6 bg-[#512D6D] text-white font-bold flex justify-center items-center rounded-md rounded-l-none -ml-3'>
                     APPLY
                   </button>
                 </div>
@@ -107,6 +110,9 @@ const Checkout = () => {
           </CollapsibleContent>
         </Card>
       </Collapsible>
+      <div>
+        <CheckoutForm />
+      </div>
     </main>
   );
 };

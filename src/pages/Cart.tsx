@@ -57,12 +57,14 @@ const Cart = () => {
         </CardContent>
         <CardContent className='py-5 border-b border-b-slate-400'>
           <div className='flex justify-between mb-4 items-center'>
-            <p className='text-2xl font-medium leading-6'>ORDER TOTAL</p>
-            <p className='flex-1 text-3xl font-semibold text-end'>MYR{total}</p>
+            <p className='flex-1 text-2xl font-medium leading-6'>ORDER TOTAL</p>
+            <p className='flex-auto text-3xl font-semibold text-end'>
+              MYR{total}
+            </p>
           </div>
           <div className='flex justify-between '>
-            <p className='text-2xl font-medium'>TOTAL QTY</p>
-            <p className='flex-1 text-3xl font-semibold text-end'>
+            <p className='flex-1 text-2xl font-medium'>TOTAL QTY</p>
+            <p className='flex-auto text-3xl font-semibold text-end'>
               {cartItem.totalQuantity} unit
             </p>
           </div>
