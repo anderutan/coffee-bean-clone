@@ -20,7 +20,7 @@ const CartPopover: React.FC<CartPopoverProps> = ({ children }) => {
   return (
     <Popover>
       <PopoverTrigger>{children}</PopoverTrigger>
-      <PopoverContent className='w-[100%]'>
+      <PopoverContent className='w-full'>
         <div className='pb-4'>
           <p className='text-2xl font-bold'>MY CART</p>
         </div>
@@ -52,10 +52,10 @@ const CartPopover: React.FC<CartPopoverProps> = ({ children }) => {
             </div>
           </div>
           <div className='flex justify-between pb-5'>
-            <Button variant='outline' size='lg'>
+            <Button variant='outline'>
               <Link to='/cart'>VIEW MY CART</Link>
             </Button>
-            <Button size='lg'>
+            <Button>
               <Link to='/checkout'>CHECKOUT</Link>
             </Button>
           </div>
