@@ -10,6 +10,8 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Divide } from 'lucide-react';
 
 const Cart = () => {
   const cartItem = useAppSelector((state) => state.cart);
@@ -26,20 +28,23 @@ const Cart = () => {
       <div>
         <p className='mb-2 font-semibold'>PRODUCT</p>
         <Separator className='bg-slate-400' />
-        {cartItem.items.map((item) => (
-          <CartItemCard item={item} key={item.product.id} />
-        ))}
+        {cartItem.items.length ? (
+          cartItem.items.map((item) => (
+            <CartItemCard item={item} key={item.product.id} />
+          ))
+        ) : (
+          <div className='pt-5'>
+            <p>
+              You have no items in your shopping cart. Please click item below
+              to continue shopping.
+            </p>
+          </div>
+        )}
       </div>
 
-      <div className='relative flex mx-2 mt-8'>
-        <Link
-          className='w-full p-3 bg-white text-[#512D6D] font-bold border border-[#512D6D] relative z-10 text-center'
-          to='/'
-        >
-          CONTINUE SHOPPING
-        </Link>
-        <span className='absolute h-[50px] w-full -bottom-[0.25rem] -right-[0.2rem] bg-[#9A4BD8] z-00'></span>
-      </div>
+      <Button variant='outline' className='w-full mt-8'>
+        <Link to='/'>CONTINUE SHOPPING</Link>
+      </Button>
 
       <Card className='my-10 border border-slate-400'>
         <CardHeader className='border-b border-b-slate-400'>
@@ -70,28 +75,22 @@ const Cart = () => {
           </div>
         </CardContent>
         <CardFooter className='w-full'>
-          <div className='relative flex w-full mx-auto mt-8'>
-            <Link
-              className='w-full p-3 bg-[#512D6D] text-white font-bold border border-[#512D6D] relative z-10 text-center text-xl'
-              to='/checkout'
-            >
-              PROCEED TO CHECKOUT
-            </Link>
-            <span className='absolute h-[50px] w-full -bottom-[0.25rem] -right-[0.2rem] bg-[#9A4BD8] z-00'></span>
-          </div>
+          <Button className='w-full mx-auto mt-8' size='lg'>
+            <Link to='/checkout'>PROCEED TO CHECKOUT</Link>
+          </Button>
         </CardFooter>
       </Card>
 
-      <div className='my-10'>
+      <div className='w-full mt-10 my-5'>
         <p className='font-medium mb-1'>PROMO CODE</p>
         <div className='flex'>
           <Input
             placeholder='Enter Promo Code...'
-            className='border border-slate-500'
+            className='border border-slate-500 focus-visible:ring-0'
           />
-          <button className='h-10 px-10 bg-[#512D6D] text-white font-bold flex justify-center items-center rounded-md rounded-l-none -ml-3'>
+          <Button className='h-10 px-6 bg-[#512D6D] text-white font-bold flex justify-center items-center rounded-md ml-3'>
             APPLY
-          </button>
+          </Button>
         </div>
       </div>
     </main>

@@ -8,6 +8,7 @@ import { Separator } from '../ui/separator';
 import { useAppSelector } from '@/app/hooks';
 import CartPopoverItemCard from './CartPopoverItemCard';
 import { Link } from 'react-router-dom';
+import { Button } from '../ui/button';
 
 type CartPopoverProps = {
   children: ReactElement;
@@ -51,24 +52,12 @@ const CartPopover: React.FC<CartPopoverProps> = ({ children }) => {
             </div>
           </div>
           <div className='flex justify-between pb-5'>
-            <div className='relative'>
-              <Link
-                className='w-full p-3 bg-white text-[#512D6D] font-bold border border-[#512D6D] relative z-10'
-                to='/cart'
-              >
-                VIEW MY CART
-              </Link>
-              <span className='absolute h-[40px] w-full -bottom-[0.7rem] -right-[0.15rem] bg-[#9A4BD8] z-00'></span>
-            </div>
-            <div className='relative'>
-              <Link
-                className='w-full py-3 px-5 bg-[#512D6D] text-white font-bold relative z-10'
-                to='/checkout'
-              >
-                CHECKOUT
-              </Link>
-              <span className='absolute h-[40px] w-full -bottom-[0.7rem] -right-[0.15rem] bg-[#9A4BD8] z-00'></span>
-            </div>
+            <Button variant='outline' size='lg'>
+              <Link to='/cart'>VIEW MY CART</Link>
+            </Button>
+            <Button size='lg'>
+              <Link to='/checkout'>CHECKOUT</Link>
+            </Button>
           </div>
         </div>
       </PopoverContent>

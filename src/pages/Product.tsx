@@ -19,12 +19,15 @@ import { addItemToCart, updateItemQuantity } from '@/features/cart/cartSlice';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ReviewForm from '@/components/ReviewForm';
 import { Separator } from '@/components/ui/separator';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/components/ui/use-toast';
 
 const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const location = useLocation();
   const pathArray = location.pathname.split('/').filter((segment) => segment);
   const { productId } = useParams();
+  const { toast } = useToast();
 
   const dispatch = useAppDispatch();
 
@@ -68,9 +71,18 @@ const Product = () => {
   };
 
   const handleAddCart = () => {
-    if (selectedCoffeeData) {
+    if (selectedCoffeeData && selectedCoffeeData?.stock > 0) {
       dispatch(addItemToCart(selectedCoffeeData));
-      dispatch(updateItemQuantity({ productId: productId, quantity }));
+      dispatch(updateItemQuantity({ productId: String(productId), quantity }));
+      toast({
+        description: `You added ${selectedCoffeeData.title} to your shopping cart.`,
+        className: 'border-2 border-green-400 text-green-800 font-semibold',
+      });
+    } else if (selectedCoffeeData && selectedCoffeeData?.stock === 0) {
+      toast({
+        description: `${selectedCoffeeData.title} is out of stock.`,
+        className: 'border-2 border-red-400 text-red-800 font-semibold',
+      });
     }
   };
 
@@ -109,12 +121,13 @@ const Product = () => {
             </button>
           </div>
         </div>
-        <button
-          className='flex items-center justify-center gap-1 w-full py-3 text-white font-bold bg-[#512D6D]'
+        <Button
+          className='w-full text-lg font-semibold flex items-center gap-2'
+          size='lg'
           onClick={handleAddCart}
         >
           ADD TO CART <MdOutlineShoppingBag />
-        </button>
+        </Button>
         <div className='flex items-center gap-4 py-8 text-slate-500 font-bold'>
           <p>SHARE TO:</p>
           <a href='#'>
@@ -176,7 +189,7 @@ const Product = () => {
                 {selectedCoffeeData?.title}
               </p>
               <div className='py-3'>
-                <ReviewForm productId={productId} />
+                {productId && <ReviewForm productId={productId} />}
               </div>
             </div>
           </TabsContent>

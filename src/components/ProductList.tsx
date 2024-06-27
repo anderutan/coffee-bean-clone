@@ -2,12 +2,15 @@ import { useAppDispatch } from '@/app/hooks';
 import { addItemToCart } from '@/features/cart/cartSlice';
 import type { Coffee } from '@/lib/type';
 import { Link, useSearchParams } from 'react-router-dom';
+import { Button } from './ui/button';
+import { useToast } from '@/components/ui/use-toast';
 
 type Props = {
   coffeeData: Coffee[];
 };
 
 const ProductList = ({ coffeeData }: Props) => {
+  const { toast } = useToast();
   const [searchParams] = useSearchParams();
   const dispatch = useAppDispatch();
 
@@ -52,7 +55,18 @@ const ProductList = ({ coffeeData }: Props) => {
   }
 
   const handleClick = (item: Coffee) => {
-    dispatch(addItemToCart(item));
+    if (item.stock > 0) {
+      dispatch(addItemToCart(item));
+      toast({
+        description: `You added ${item.title} to your shopping cart.`,
+        className: 'border-2 border-green-400 text-green-800 font-semibold',
+      });
+    } else {
+      toast({
+        description: `${item.title} is out of stock.`,
+        className: 'border-2 border-red-400 text-red-800 font-semibold',
+      });
+    }
   };
 
   return (
@@ -61,22 +75,19 @@ const ProductList = ({ coffeeData }: Props) => {
         <div className='flex flex-col items-center' key={item.title}>
           <Link to={`/${item.id}`} className='flex flex-col items-center'>
             <img src={item.image} alt={item.title} className='h-40 w-40' />
-            <h3 className='uppercase text-xl leading-5 font-medium text-center h-[2.7rem] overflow-hidden line-clamp-2 mb-5'>
+            <h3 className='uppercase text-xl leading-5 font-medium text-center h-[2.6rem] overflow-hidden line-clamp-2 mb-5'>
               {item.title}
             </h3>
             <p className='text-xl leading-5 font-semibold pb-5'>
               MYR{item.price}.00
             </p>
           </Link>
-          <div className='relative w-full'>
-            <button
-              className='w-full py-3 bg-[#512D6D] text-white font-bold relative z-10'
-              onClick={() => handleClick(item)}
-            >
-              ADD TO CART
-            </button>
-            <span className='absolute h-full w-full -bottom-[0.15rem] -right-[0.15rem] bg-[#9A4BD8] z-0'></span>
-          </div>
+          <Button
+            className='w-full py-3 bg-[#512D6D] text-white font-bold relative z-10'
+            onClick={() => handleClick(item)}
+          >
+            ADD TO CART
+          </Button>
         </div>
       ))}
     </div>

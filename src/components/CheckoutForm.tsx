@@ -48,19 +48,11 @@ const formSchema = z.object({
   shipping: z.enum(['pickup', 'delivery'], {
     required_error: 'You need to select a shipping method.',
   }),
-  store: z.string(),
-  pickupHp: z.string().length(10),
+  store: z.string().optional(),
+  pickupHp: z.string().optional(),
   date: z.date({ required_error: 'Date for pickup / delivery is required.' }),
   time: z.string(),
-  comment: z
-    .string()
-    .min(10, {
-      message: 'Comment must be at least 10 characters.',
-    })
-    .max(160, {
-      message: 'Comment must not be longer than 30 characters.',
-    })
-    .optional(),
+  comment: z.string().optional(),
 });
 
 const CheckoutForm = () => {

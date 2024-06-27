@@ -7,16 +7,22 @@ import {
 } from '@/features/cart/cartSlice';
 import { Separator } from '../ui/separator';
 import { useAppDispatch } from '@/app/hooks';
+import { useToast } from '@/components/ui/use-toast';
 
 type Props = {
   item: CartItem;
 };
 
 const CartPopoverItemCard = ({ item }: Props) => {
+  const { toast } = useToast();
   const dispatch = useAppDispatch();
 
   const handleDelete = (id: string) => {
     dispatch(removeItemFromCart(id));
+    toast({
+      description: `You had remove ${item.product.title} from cart.`,
+      className: 'border-2 border-red-300 text-red-700',
+    });
   };
 
   const handleIncrease = (id: string, quantity: number) => {

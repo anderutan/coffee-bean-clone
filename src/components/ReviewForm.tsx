@@ -14,7 +14,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { v4 as uuid } from 'uuid';
 import { useAppDispatch } from '@/app/hooks';
-import { useParams } from 'react-router-dom';
 import { updateCoffeeReviews } from '@/features/product/productSlice';
 
 const formSchema = z.object({
